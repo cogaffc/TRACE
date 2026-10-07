@@ -115,50 +115,36 @@
   function drawResults() {
     var box = document.getElementById('viz-results');
     if (!box) return;
-    var narrow = box.clientWidth < 560;
-    var rowH = 46, top = 30, bottom = 34;
-    var o = svgFor(box, top + rowH * TASKS.length + bottom);
-    var labelW = narrow ? 92 : 150, rightW = narrow ? 64 : 120;
-    var x0 = labelW, x1 = o.w - rightW;
-    var sx = function (v) { return x0 + (x1 - x0) * v / 100; };
-    var g = el('g', {}, o.svg);
-    [0, 25, 50, 75, 100].forEach(function (t) {
-      el('line', { x1: sx(t), x2: sx(t), y1: top - 8, y2: top + rowH * TASKS.length, class: 'gridline' }, g);
-      txt(g, sx(t), o.h - 10, String(t), { 'text-anchor': 'middle', 'font-size': 12 });
-    });
     var view = RESULTS[resultsView];
-    var series = resultsView === 'main'
-      ? [['GPT-5 (thinking)', view.gpt, C.gpt], ['TRACER', view.tracer, C.tracer]]
-      : [['Human', view.human, C.human], ['GPT-5 (thinking)', view.gpt, C.gpt], ['TRACER', view.tracer, C.tracer]];
-    txt(g, o.w - 4, top - 12, resultsView === 'main' ? 'TRACER − GPT-5' : 'Human − TRACER',
-      { 'text-anchor': 'end', 'font-size': 12 });
+    box.textContent = '';
+    var table = document.createElement('table');
+    var head = table.createTHead().insertRow();
+    var modelHead = document.createElement('th');
+    modelHead.scope = 'col'; modelHead.textContent = 'Model'; head.appendChild(modelHead);
     TASKS.forEach(function (task, i) {
-      var cy = top + rowH * i + rowH / 2;
-      if (i === TASKS.length - 1) el('line', { x1: 0, x2: o.w, y1: cy - rowH / 2, y2: cy - rowH / 2, stroke: C.grid }, g);
-      txt(g, 0, cy - 4, task, { 'font-size': 14, class: 'lab', 'font-weight': 600 });
-      txt(g, 0, cy + 16, TASK_NAMES[i], { 'font-size': 12 });
-      var vals = series.map(function (s) { return s[1][i]; });
-      el('line', { x1: sx(Math.min.apply(null, vals)), x2: sx(Math.max.apply(null, vals)), y1: cy, y2: cy, stroke: '#D5D9DE', 'stroke-width': 2 }, g);
-      series.forEach(function (s) {
-        el('circle', { cx: sx(s[1][i]), cy: cy, r: 6, fill: s[2], stroke: C.surface, 'stroke-width': 2, class: 'mark' }, g);
-      });
-      var tv = view.tracer[i];
-      txt(g, sx(tv) + (resultsView === 'matched' && view.human[i] - tv < 8 && view.human[i] > tv ? -10 : 10), cy - 10, fmt(tv),
-        { 'font-size': 12, class: 'val', 'text-anchor': (resultsView === 'matched' && view.human[i] > tv && view.human[i] - tv < 8) ? 'end' : 'start' });
+      var th = document.createElement('th'); th.scope = 'col'; th.textContent = task;
+      var name = document.createElement('small'); name.textContent = TASK_NAMES[i];
+      th.appendChild(name); head.appendChild(th);
+    });
+    var body = table.createTBody();
+    var rows = [['GPT-5 (thinking)', view.gpt], ['TRACER', view.tracer]];
+    if (view.human) rows.unshift(['Human', view.human]);
+    rows.forEach(function (item) {
+      var row = body.insertRow();
+      if (item[0] === 'TRACER') row.className = 'result-ours';
+      var label = document.createElement('th'); label.scope = 'row'; label.textContent = item[0]; row.appendChild(label);
+      item[1].forEach(function (v) { row.insertCell().textContent = fmt(v); });
+    });
+    var delta = body.insertRow(); delta.className = 'result-delta';
+    var label = document.createElement('th'); label.scope = 'row';
+    label.textContent = resultsView === 'main' ? 'TRACER − GPT-5' : 'Human − TRACER'; delta.appendChild(label);
+    TASKS.forEach(function (_, i) {
       var diff = resultsView === 'main' ? view.tracer[i] - view.gpt[i] : view.human[i] - view.tracer[i];
-      txt(g, o.w - 4, cy + 5, (diff >= 0 ? '+' : '−') + fmt(Math.abs(diff)), { 'text-anchor': 'end', 'font-size': 13, class: 'val' });
-      var hit = el('rect', { x: 0, y: cy - rowH / 2, width: o.w, height: rowH, class: 'hit' }, g);
-      hoverable(hit, task + ' · ' + TASK_NAMES[i], series.map(function (s) { return [s[0], fmt(s[1][i]), s[2]]; }));
+      delta.insertCell().textContent = (diff >= 0 ? '+' : '−') + fmt(Math.abs(diff));
     });
-    // legend (HTML) mirrors the marks
-    var lg = document.getElementById('res-legend');
-    lg.textContent = '';
-    series.forEach(function (s) {
-      var sp = document.createElement('span'); var i = document.createElement('i'); i.style.background = s[2];
-      sp.appendChild(i); sp.appendChild(document.createTextNode(s[0])); lg.appendChild(sp);
-    });
+    box.appendChild(table);
     document.getElementById('res-note').textContent = resultsView === 'main'
-      ? 'Scores on the main evaluation set (Table 2). Avg. averages the five tasks.'
+      ? 'Table 2. Avg. is the five-task mean. Average margin: +5.80 points (95% CI 4.42–7.17).'
       : 'Humans and models answer the same 50 questions per task (Appendix A.7). Human scores average two participants.';
   }
 

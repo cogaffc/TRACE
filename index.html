@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-22">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-23">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -263,7 +263,7 @@
       </article>
       <article class="finding" style="--accent: var(--s-tracer)">
         <p class="f-num">04</p>
-        <h3>Fabrication Analysis</h3>
+        <h3>Unsupported-Content Audit</h3>
         <p class="f-key"><b>17.3%</b> of GPT-5's physical-effect claims are fabricated; TRACER, <b>3.3%</b></p>
         <div class="viz" id="viz-fab" role="img" aria-label="Fabricated claims by chain stage for GPT-5 thinking and TRACER."></div>
         <p class="f-text">Full-chain outputs are checked against video frames and subtitles in External Reality, Manifestation, and Physical Effect. TRACER reduces the aggregate fabrication rate from 11.0% to 4.7%.</p>
@@ -314,21 +314,14 @@
     <h2 id="res-title">Main Results</h2>
     <p class="section-lede">Differences are significant on every task (p &lt; 0.05, bootstrap test, Holm-corrected). The largest gains appear in regulation decoding and cause reasoning.</p>
 
-    <dl class="tiles">
-      <div class="tile-hl"><dt>TRACER average</dt><dd>63.76</dd></div>
-      <div><dt>Margin over GPT-5 (thinking)</dt><dd>+5.80</dd><p>95% CI 4.42 to 7.17</p></div>
-      <div><dt>Largest gain, T2 regulation</dt><dd>+7.97</dd></div>
-    </dl>
-
-    <div class="chart-card">
+    <div class="result-summary">
       <div class="chart-bar">
         <div class="seg" role="group" aria-label="Evaluation set">
           <button type="button" class="seg-btn" data-view="main" aria-pressed="true">Main evaluation set</button>
           <button type="button" class="seg-btn" data-view="matched" aria-pressed="false">Human-matched subset</button>
         </div>
-        <div class="legend" id="res-legend"></div>
       </div>
-      <div id="viz-results" class="viz viz-results" role="img" aria-label="Per-task scores of GPT-5 thinking and TRACER."></div>
+      <div id="viz-results" class="result-table" role="region" aria-label="Per-task result comparison" tabindex="0"></div>
       <p class="note" id="res-note">Scores on the main evaluation set. Avg. averages the five tasks.</p>
     </div>
 
@@ -504,6 +497,6 @@
 </dialog>
 <div class="tooltip" id="tooltip" role="status" hidden></div>
 
-<script src="assets/js/main.js?v=20261008-5" defer></script>
+<script src="assets/js/main.js?v=20261008-6" defer></script>
 </body>
 </html>
