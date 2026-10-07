@@ -1,25 +1,482 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="TRACE: cognition-oriented emotion tracing from causes to consequences in real-world social scenes.">
-<title>TRACE | Cognition-Oriented Emotion Tracing</title>
-<style>
-:root{--ink:#183530;--muted:#52655e;--paper:#f5f3eb;--line:#cdd5ca;--accent:#bc532e}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.65}main{max-width:1020px;margin:auto;padding:44px 30px 70px}nav{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:18px;font:14px Verdana,sans-serif}nav a,a{color:inherit}header{padding:65px 0 48px;background:radial-gradient(ellipse at 85% 20%,#dce8d9aa,transparent 60%)}.eyebrow{font:12px Verdana,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--accent)}h1{font-size:clamp(56px,10vw,100px);line-height:1;margin:20px 0;letter-spacing:-.06em}h2{font-weight:normal;font-size:clamp(25px,4vw,38px);line-height:1.25;max-width:850px;margin:0 0 26px}.authors{max-width:760px;font-size:17px}.affiliations{font-size:14px;color:var(--muted)}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button,.pending{font:13px Verdana,sans-serif;padding:12px 18px;border:1px solid var(--line);border-radius:4px}.button{background:var(--ink);color:white;text-decoration:none}.button:hover{background:#2c5148}.pending{color:var(--muted)}section{border-top:1px solid var(--line);padding:30px 0}h3{font-size:25px;font-weight:normal;margin:0 0 16px}p{max-width:840px}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:25px 0}.stage{border-top:3px solid var(--accent);padding:18px;background:#fff9}.stage strong{display:block;font-size:23px}.stage span{font-size:15px;color:var(--muted)}.tasks{padding-left:22px}.tasks li{padding:4px 0}footer{border-top:1px solid var(--line);padding-top:20px;font:12px Verdana,sans-serif;color:var(--muted)}@media(max-width:600px){main{padding:25px 20px 40px}header{padding:40px 0}.flow{grid-template-columns:1fr}.authors{font-size:16px}nav{font-size:11px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>TRACE · Cognition-Oriented Emotion Tracing</title>
+  <meta name="description" content="TRACE formalizes an affective episode through Condition, Affect, and Effect, introduces TRACE-Bench with five tasks over real-world social videos, and proposes TRACER, a cognition-grounded structured reasoning method.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-19">
 </head>
-<body><main>
-<nav><strong>TRACE</strong><a href="#resources">Resources</a></nav>
-<header><div class="eyebrow">Cognition &amp; affective computing</div><h1>TRACE</h1>
-<h2>Cognition-Oriented Emotion Tracing from Causes to Consequences in Real-World Social Scenes</h2>
-<p class="authors">Hao Li &middot; Jinye Zhang &middot; Bobo Li &middot; Mong-Li Lee &middot; Wynne Hsu &middot; Zheng Wang &middot; Hao Fei &middot; Min Zhang</p>
-<p class="affiliations">Wuhan University &nbsp;/&nbsp; National University of Singapore &nbsp;/&nbsp; University of Oxford &nbsp;/&nbsp; Harbin Institute of Technology (Shenzhen)</p>
-<div class="links"><a class="button" href="https://github.com/cogaffc/TRACER">Code repository</a><span class="pending">Paper &middot; forthcoming</span><span class="pending">Data &middot; forthcoming</span></div></header>
-<section><h3>From causes to consequences</h3><p>Emotion unfolds through connected causes, feelings, expressions, and consequences. TRACE formalizes an affective episode through the Affective Blueprint, with cognition shaping the relations among three stages.</p>
-<div class="flow"><div class="stage"><strong>Condition</strong><span>External circumstances and internal drivers.</span></div><div class="stage"><strong>Affect</strong><span>Felt states, observable manifestations, and regulation.</span></div><div class="stage"><strong>Effect</strong><span>Mental, affective, and physical consequences.</span></div></div></section>
-<section><h3>TRACE-Bench</h3><p>A benchmark of 3,746 structured question-answer pairs over 646 videos, evaluating affective understanding across five tasks:</p><ol class="tasks"><li>Grounded Affect Recognition</li><li>Regulation Decoding</li><li>Affective Cause Reasoning</li><li>Affective Effect Reasoning</li><li>Full Chain Reconstruction</li></ol></section>
-<section><h3>TRACER</h3><p>A cognition-grounded structured reasoning method that combines factual observations, cognitive appraisals, and premise-declared derivation. Explicit premise citations connect intermediate and target conclusions, making the derivation traceable.</p></section>
-<section id="resources"><h3>Resources</h3><p>This initial project page will be updated with the paper, dataset access, and implementation details. The <a href="https://github.com/cogaffc/TRACER">TRACER repository</a> is the designated code release location; the implementation is being prepared for release.</p></section>
-<footer>TRACE research project</footer>
-</main></body></html>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="TRACE, back to top">
+      <span class="brand-mark" aria-hidden="true"><i class="c"></i><i class="a"></i><i class="e"></i></span>
+      <span class="brand-name">TRACE</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Sections">
+      <a href="#motivation">Motivation</a>
+      <a href="#blueprint">Blueprint</a>
+      <a href="#benchmark">Benchmark</a>
+      <a href="#findings">Findings</a>
+      <a href="#tracer">TRACER</a>
+      <a href="#results">Results</a>
+      <a href="#cases">Cases</a>
+      <a href="#paper" class="nav-paper">Paper</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================== HERO ============================== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="venue">Research manuscript</p>
+      <h1 class="title">Cognition-Oriented Emotion Tracing from Causes to Consequences in Real-World Social Scenes</h1>
+      <p class="authors">
+        <span>Hao Li<sup>1</sup></span>, <span>Jinye Zhang<sup>1</sup></span>, <span>Bobo Li<sup>2</sup></span>,
+        <span>Mong-Li Lee<sup>2</sup></span>, <span>Wynne Hsu<sup>2</sup></span>, <span>Zheng Wang<sup>1</sup></span>,
+        <span>Hao Fei<sup>3,*</sup></span>, <span>Min Zhang<sup>4</sup></span>
+      </p>
+      <p class="affils">
+        <span><sup>1</sup>Wuhan University</span>
+        <span><sup>2</sup>National University of Singapore</span>
+        <span><sup>3</sup>University of Oxford</span>
+        <span><sup>4</sup>Harbin Institute of Technology (Shenzhen)</span>
+        <span class="corr"><sup>*</sup>Corresponding author</span>
+      </p>
+      <nav class="links" aria-label="Resources">
+        <span class="pill is-soon" aria-disabled="true" data-link="arxiv" title="Link added once the preprint is public"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>arXiv<em>soon</em></span>
+        <span class="pill is-soon" aria-disabled="true" data-link="huggingface" title="Link added once the dataset is public"><img class="brand-icon" src="assets/img/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Dataset<em>soon</em></span>
+        <a class="pill" href="https://github.com/cogaffc/TRACER" data-link="github"><img class="brand-icon" src="assets/img/github.svg" width="20" height="20" alt="" aria-hidden="true">Code</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== MOTIVATION ============================== -->
+<section class="section" id="motivation" aria-labelledby="mot-title">
+  <div class="wrap">
+    <p class="eyebrow">Motivation</p>
+    <h2 id="mot-title">From local labels to the whole episode</h2>
+    <p class="section-lede">Existing affective benchmarks often evaluate local targets such as affective states or causes. TRACE-Bench asks five complementary questions about one episode, from the conditions that give rise to an emotion, through the regulation that reshapes its expression, to the consequences it produces for the subject or other participants.</p>
+
+    <figure class="paper-figure">
+      <button type="button" class="case-img" data-lightbox="assets/img/figures/fig1-teaser.webp" data-caption="Fig. 1. From local affective targets to the complete affective episode." aria-label="Enlarge Figure 1: motivating example">
+        <img src="assets/img/figures/fig1-teaser.webp" alt="Figure 1 from the paper: the six-frame shoe-store episode, existing recognition and cause questions, and the annotated Condition, Affect, and Effect for tasks T1 to T5." width="2200" height="1002" fetchpriority="high">
+      </button>
+      <figcaption class="note">Fig. 1. The paper's motivating example. Select the figure to enlarge.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== BLUEPRINT ============================== -->
+<section class="section" id="blueprint" aria-labelledby="bp-title">
+  <div class="wrap">
+    <p class="eyebrow">Affective Blueprint</p>
+    <h2 id="bp-title">A formal representation of an affective episode</h2>
+    <p class="section-lede">The Blueprint represents a subject-centered affective episode through three causally connected stages, Condition, Affect, and Effect. Each stage is decomposed into components, each represented by a set of fields. Three theories each anchor one stage of the chain.</p>
+
+    <div class="bp-controls" role="group" aria-label="Highlight task constructs">
+      <button type="button" data-bp-task="all" aria-pressed="true">All</button>
+      <button type="button" data-bp-task="T1" aria-pressed="false">T1 <span>Recognition</span></button>
+      <button type="button" data-bp-task="T2" aria-pressed="false">T2 <span>Regulation</span></button>
+      <button type="button" data-bp-task="T3" aria-pressed="false">T3 <span>Cause</span></button>
+      <button type="button" data-bp-task="T4" aria-pressed="false">T4 <span>Effect</span></button>
+      <button type="button" data-bp-task="T5" aria-pressed="false">T5 <span>Full chain</span></button>
+    </div>
+    <p class="bp-readout" id="bp-readout" aria-live="polite">Select a task to highlight its supplied and queried constructs.</p>
+    <div class="bp-key"><span><i class="bp-swatch queried"></i>Queried</span><span><i class="bp-swatch supplied"></i>Supplied</span><span>* When annotated</span></div>
+    <div class="bp-layout">
+    <div class="bp-diagram">
+<section class="band band-e" aria-label="Effect">
+        <h3 class="band-title"><span class="num">③</span> Effect <i>ℰ</i></h3>
+        <div class="row-nodes" data-bp-construct="eff">
+          <span class="node" data-def="What a recipient comes to believe, desire, or intend.">Mental Effect</span>
+          <span class="node" data-def="The affect experienced by the recipient as a consequence.">Affective Effect</span>
+          <span class="node" data-def="The recipient's resulting action or behavioral response.">Physical Effect</span>
+        </div>
+      </section>
+<div class="link-up" data-bp-edge="effect"><span>Resulting</span></div>
+<section class="band band-a" aria-label="Affect">
+        <h3 class="band-title"><span class="num">②</span> Affect <i>𝒜</i></h3>
+        <div class="aff">
+          <div class="grp g-man" data-bp-construct="man">
+            <h4>Manifestation <i>A</i><sub>man</sub></h4>
+            <div class="nodes two">
+              <span class="node" data-def="Observable facial movement or configuration.">Facial</span>
+              <span class="node" data-def="Observable posture, gesture, movement, or spatial behavior.">Bodily</span>
+              <span class="node" data-def="The subject's words or speech act.">Verbal</span>
+              <span class="node" data-def="Tone, pitch, volume, pace, or rhythm.">Vocal</span>
+            </div>
+          </div>
+          <div class="f-up" data-bp-edge="manifestation"><span><i>f</i>(·)</span></div>
+          <div class="grp g-sta" data-bp-construct="sta">
+            <h4>State <i>A</i><sub>sta</sub></h4>
+            <div class="nodes two">
+              <span class="node" data-def="The person toward whom the affect is directed.">Object</span>
+              <span class="node" data-def="Valence of the affective state.">Polarity</span>
+              <span class="node" data-def="The affect at coarse and fine-grained levels.">Category <small>(coarse &amp; fine)</small></span>
+              <span class="node" data-def="Strength of the affective state.">Intensity</span>
+            </div>
+          </div>
+          <div class="f-prime" data-bp-edge="regulation" aria-hidden="true"><span><i>f</i>′(·)</span></div>
+          <div class="grp g-reg" data-bp-construct="reg">
+            <h4>Regulation <i>A</i><sub>reg</sub></h4>
+            <div class="nodes one">
+              <span class="node" data-def="The affective state the subject intends to manifest.">Target State</span>
+              <span class="node" data-def="The affective state before regulation.">Source State</span>
+              <span class="node" data-def="The regulatory relation between source and target: None, Suppression, Amplification, Substitution, or Fabrication.">Tactic</span>
+              <span class="node" data-def="The purpose of regulating the affective state.">Goal</span>
+            </div>
+          </div>
+          <p class="order o1">First-order</p>
+          <p class="order o2">Second-order</p>
+        </div>
+      </section>
+<div class="link-up" data-bp-edge="cause"><span>Triggering</span></div>
+<section class="band band-c" aria-label="Condition">
+        <h3 class="band-title"><span class="num">①</span> Condition <i>𝒞</i></h3>
+        <div class="cond">
+          <div class="grp g-phys">
+            <h4>Physical Condition</h4>
+            <div class="nodes three ctx">
+              <span class="node" data-def="Physical Condition describes the external situation through its environment, characters, and events.">Environment</span>
+              <span class="node" data-def="Physical Condition describes the external situation through its environment, characters, and events.">Characters</span>
+              <span class="node" data-def="Physical Condition describes the external situation through its environment, characters, and events.">Event</span>
+            </div>
+          </div>
+          <div class="d-arrow d1" aria-hidden="true"></div>
+          <div class="grp g-ment">
+            <h4>Mental Condition</h4>
+            <div class="nodes three ctx">
+              <span class="node" data-def="Mental Condition captures the subject's beliefs, desires, and intentions.">Belief</span>
+              <span class="node" data-def="Mental Condition captures the subject's beliefs, desires, and intentions.">Desire</span>
+              <span class="node" data-def="Mental Condition captures the subject's beliefs, desires, and intentions.">Intention</span>
+            </div>
+          </div>
+          <div class="d-arrow d2" aria-hidden="true"></div>
+          <div class="grp g-cause">
+            <h4>Cause <i>C</i><sub>cau</sub></h4>
+            <div class="nodes one">
+              <span class="node" data-bp-construct="ext" data-def="External Reality: the objective event triggering the subject's affect.">External</span>
+              <span class="node" data-def="The focal person in the affective episode.">Subject</span>
+              <span class="node" data-bp-construct="int" data-def="Internal Driver: the subject's belief, desire, or intention motivating affect.">Internal</span>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+<div class="bp-theories">
+<aside class="theory th-c">
+        <p class="th-name"><span>Theory 1</span>Cognitive Appraisal Theory</p>
+        <p>A situation acquires affective significance through appraisal of the relation between the external situation and the subject's internal stance.</p>
+      </aside>
+<aside class="theory th-a">
+        <p class="th-name"><span>Theory 2</span>Emotion Regulation Theory</p>
+        <p>Regulation can modify affective experience and expression, so Manifestation may diverge from the underlying State.</p>
+      </aside>
+<aside class="theory th-e">
+        <p class="th-name"><span>Theory 3</span>Emotions as Social Information (EASI)</p>
+        <p>Emotions provide social information that can influence what others understand, feel, and do during interaction.</p>
+      </aside>
+</div>
+    </div>
+    <p class="fig-link">
+      <span class="note-inline">Redrawn from Fig. 3 of the paper. Hover a field for its definition.</span>
+      <button type="button" class="link-btn" data-lightbox="assets/img/figures/fig3-blueprint.webp" data-caption="Fig. 3. The Affective Blueprint. A subject-centered affective episode is represented through three causally connected stages: Condition, Affect, and Effect. Each stage is decomposed into several components, each represented by a set of fields.">View Fig. 3</button>
+      <button type="button" class="link-btn" data-lightbox="assets/img/figures/fig2-theory.webp" data-caption="Fig. 2. Theoretical grounding of affect as a causally structured process: internal stance shapes affective meaning, regulation can separate State from Manifestation, and Manifestation can influence others.">View Fig. 2, the theory examples</button>
+    </p>
+  </div>
+</section>
+
+<!-- ============================== BENCHMARK ============================== -->
+<section class="section" id="benchmark" aria-labelledby="bench-title">
+  <div class="wrap">
+    <p class="eyebrow">TRACE-Bench</p>
+    <h2 id="bench-title">Five tasks with widening structural spans</h2>
+    <p class="section-lede">Each task takes a multimodal social video with aligned subtitles as input. The tasks differ in which Blueprint constructs are supplied as known and which are queried, covering within-stage reasoning (T1–T2), cross-stage reasoning (T3–T4), and full-chain reconstruction (T5).</p>
+
+    <dl class="stats">
+      <div><dt>Structured QA pairs</dt><dd>3,746</dd></div>
+      <div><dt>Videos</dt><dd>646</dd></div>
+      <div><dt>Tasks</dt><dd>5</dd></div>
+      <div><dt>Video sources</dt><dd>3</dd><p>Movie-clips · EQ4You · Social-IQ</p></div>
+    </dl>
+
+    <figure class="spans">
+      <div class="spans-legend" aria-hidden="true">
+        <span><i class="mk q"></i>Queried</span>
+        <span><i class="mk g"></i>Supplied as known</span>
+        <span><i class="mk q dash"></i>Queried when annotated</span>
+        <span><i class="mk g dash"></i>Supplied when annotated</span>
+      </div>
+      <div class="spans-grid" id="spans" role="table" aria-label="Known and queried Blueprint constructs for each task">
+        <!-- built by main.js from the task definitions -->
+      </div>
+      <figcaption class="note">From the task formulation in Section 4.1 of the paper. T2 answers also cite the manifestation cues that support the inferred regulation. T4 queries one Effect channel for a specified recipient; T5 queries the requested channels.</figcaption>
+    </figure>
+
+    <div class="pipeline">
+      <h3 class="pipe-title">How the benchmark is built</h3>
+      <ol class="pipe">
+        <li><span class="pn">1</span><h4>Source collection</h4><p>Social clips from Movie-clips, EQ4You, and Social-IQ are screened by an MLLM and verified during annotation.</p></li>
+        <li><span class="pn">2</span><h4>Chain annotation</h4><p>An MLLM drafts subject-centered chains; annotators reject, correct, add, and verify them against the video.</p></li>
+        <li><span class="pn">3</span><h4>QA annotation</h4><p>Templates convert each verified chain into task-specific QA pairs, followed by final human validation.</p></li>
+      </ol>
+      <p class="fig-link"><button type="button" class="link-btn" data-lightbox="assets/img/figures/fig4-benchmark.webp" data-caption="Fig. 4. TRACE-Bench construction pipeline and dataset statistics.">View Fig. 4, construction pipeline and dataset statistics</button></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FINDINGS ============================== -->
+<section class="section" id="findings" aria-labelledby="find-title">
+  <div class="wrap">
+    <p class="eyebrow">Findings</p>
+    <h2 id="find-title">What the evaluation reveals</h2>
+    <p class="section-lede">Open-source, closed-source, and affect-specialized MLLMs were evaluated on TRACE-Bench, alongside two diagnostic studies of their outputs.</p>
+
+    <div class="findings">
+      <article class="finding" style="--accent: var(--s-human)">
+        <p class="f-num">01</p>
+        <h3>Models remain far below humans</h3>
+        <p class="f-key"><b>15.57</b> points between humans and TRACER</p>
+        <div class="viz" id="viz-human" role="img" aria-label="Average score on the same 50 questions per task: humans 79.15, TRACER 63.58, GPT-5 thinking 58.75."></div>
+        <p class="f-text">On the same 50 questions per task, humans average 79.15, TRACER 63.58, and GPT-5 (thinking) 58.75.</p>
+      </article>
+      <article class="finding" style="--accent: var(--s-affect)">
+        <p class="f-num">02</p>
+        <h3>Affect-specialized models generally lag behind general-purpose MLLMs</h3>
+        <p class="f-key"><b>21.47</b> best affect-specialized average, against <b>57.96</b> for GPT-5 (thinking)</p>
+        <div class="viz" id="viz-family" role="img" aria-label="Average score of each baseline, grouped by family."></div>
+        <p class="f-text">Each dot is one baseline's average over the five tasks on the full benchmark.</p>
+      </article>
+      <article class="finding" style="--accent: var(--s-gpt)">
+        <p class="f-num">03</p>
+        <h3>Models mistake Manifestation for State</h3>
+        <p class="f-key"><b>19%</b> of GPT-5 descriptions, <b>27%</b> for Qwen3-VL</p>
+        <div class="viz" id="viz-surface" role="img" aria-label="State attribution where State and Manifestation differ, with and without appraisal records."></div>
+        <p class="f-text">At moments where State and Manifestation differ in category, supplying appraisal records raises correct State attribution from 50% to 60% for GPT-5 and from 40% to 51% for Qwen3-VL.</p>
+      </article>
+      <article class="finding" style="--accent: var(--s-tracer)">
+        <p class="f-num">04</p>
+        <h3>Fabrication concentrates in downstream Effect</h3>
+        <p class="f-key"><b>17.3%</b> of GPT-5's physical-effect claims are fabricated; TRACER, <b>3.3%</b></p>
+        <div class="viz" id="viz-fab" role="img" aria-label="Fabricated claims by chain stage for GPT-5 thinking and TRACER."></div>
+        <p class="f-text">Full-chain outputs are checked against video frames and subtitles in External Reality, Manifestation, and Physical Effect. TRACER reduces the aggregate fabrication rate from 11.0% to 4.7%.</p>
+      </article>
+    </div>
+    <p class="fig-link">
+      <button type="button" class="link-btn" data-lightbox="assets/img/figures/fig14-surface.webp" data-caption="Fig. 14. Appraisal interventions for State attribution. Each setting uses the same 58 moments for GPT-5 and 55 for Qwen3-VL.">View Fig. 14</button>
+      <button type="button" class="link-btn" data-lightbox="assets/img/figures/fig13-fabrication.webp" data-caption="Fig. 13. Fabrication rates by chain stage. RT and PDD correspond to the topology and derivation modules of TRACER.">View Fig. 13</button>
+    </p>
+  </div>
+</section>
+
+<!-- ============================== TRACER ============================== -->
+<section class="section" id="tracer" aria-labelledby="tracer-title">
+  <div class="wrap">
+    <p class="eyebrow">TRACER</p>
+    <h2 id="tracer-title">Cognition-grounded structured reasoning</h2>
+    <p class="section-lede">Each derivation step couples a natural-language inference with explicit premise citations drawn from factual observations, cognitive appraisals, and established upstream conclusions. The linked steps form a traceable graph of intermediate and target conclusions.</p>
+
+    <figure class="method-overview">
+      <button type="button" class="case-img" data-lightbox="assets/img/figures/fig5-tracer.webp" data-caption="Fig. 5. Overview of TRACER." aria-label="Enlarge TRACER method overview">
+        <img src="assets/img/figures/fig5-tracer.webp" alt="TRACER: factual observation extraction, cognition-grounded affective analysis, and Blueprint-guided structured reasoning with task-conditioned topologies and premise-declared derivation." width="2200" height="998" loading="lazy">
+      </button>
+      <figcaption class="note">Fig. 5. Overview of TRACER. Select the figure to enlarge.</figcaption>
+    </figure>
+    <details class="method-detail">
+      <summary>Explore the premise links in Fig. 5(b)</summary>
+    <figure class="derivation">
+      <div class="deriv-head">
+        <h3>An abridged derivation from the running example</h3>
+        <p>Select a conclusion to see the premises it cites.</p>
+      </div>
+      <div class="deriv-legend" aria-hidden="true">
+        <span class="lg lg-obs">Observation</span><span class="lg lg-app">Appraisal</span>
+        <span class="lg lg-c">Condition</span><span class="lg lg-a">Affect</span><span class="lg lg-e">Effect</span>
+      </div>
+      <div id="deriv" class="deriv-canvas"></div>
+      <p id="deriv-readout" class="deriv-readout" aria-live="polite">Showing all premise links.</p>
+      <figcaption class="note">Adapted from Fig. 5(b) of the paper.
+        <button type="button" class="link-btn" data-lightbox="assets/img/figures/fig5-tracer.webp" data-caption="Fig. 5. Overview of TRACER. Factual observations are interpreted through character-centered appraisal and used in Blueprint-guided derivation.">View Fig. 5</button>
+      </figcaption>
+    </figure>
+    </details>
+  </div>
+</section>
+
+<!-- ============================== RESULTS ============================== -->
+<section class="section" id="results" aria-labelledby="res-title">
+  <div class="wrap">
+    <p class="eyebrow">Results</p>
+    <h2 id="res-title">TRACER outperforms every model baseline on each task</h2>
+    <p class="section-lede">Differences are significant on every task (p &lt; 0.05, bootstrap test, Holm-corrected). The largest gains appear in regulation decoding and cause reasoning.</p>
+
+    <dl class="tiles">
+      <div class="tile-hl"><dt>TRACER average</dt><dd>63.76</dd></div>
+      <div><dt>Margin over GPT-5 (thinking)</dt><dd>+5.80</dd><p>95% CI 4.42 to 7.17</p></div>
+      <div><dt>Largest gain, T2 regulation</dt><dd>+7.97</dd></div>
+    </dl>
+
+    <div class="chart-card">
+      <div class="chart-bar">
+        <div class="seg" role="group" aria-label="Evaluation set">
+          <button type="button" class="seg-btn" data-view="main" aria-pressed="true">Main evaluation set</button>
+          <button type="button" class="seg-btn" data-view="matched" aria-pressed="false">Human-matched subset</button>
+        </div>
+        <div class="legend" id="res-legend"></div>
+      </div>
+      <div id="viz-results" class="viz viz-results" role="img" aria-label="Per-task scores of GPT-5 thinking and TRACER."></div>
+      <p class="note" id="res-note">Scores on the main evaluation set. Avg. averages the five tasks.</p>
+    </div>
+
+    <details class="tables">
+      <summary>All models and the human-matched scores</summary>
+      <div class="table-wrap">
+        <table>
+          <caption>Main results on TRACE-Bench (Table 2 of the paper)</caption>
+          <thead><tr><th scope="col">Model</th><th scope="col">T1 Rec.</th><th scope="col">T2 Reg.</th><th scope="col">T3 Cause</th><th scope="col">T4 Effect</th><th scope="col">T5 Full</th><th scope="col">Avg.</th></tr></thead>
+          <tbody>
+            <tr class="grp"><th colspan="7" scope="rowgroup">Affect-specialized</th></tr>
+            <tr><th scope="row">Emotion-LLaMA</th><td>0.45</td><td>5.22*</td><td>2.26†</td><td>0.31†</td><td>0.20†</td><td>1.69</td></tr>
+            <tr><th scope="row">AffectGPT</th><td>34.57</td><td>4.64†</td><td>17.99*</td><td>15.79*</td><td>20.87*</td><td>18.77</td></tr>
+            <tr><th scope="row">Emotion-Qwen</th><td>29.45*</td><td>24.24*</td><td>21.04*</td><td>13.49</td><td>19.13*</td><td>21.47</td></tr>
+            <tr class="grp"><th colspan="7" scope="rowgroup">Open-source general-purpose</th></tr>
+            <tr><th scope="row">LLaVA-OneVision-7B</th><td>35.13</td><td>23.51</td><td>25.28</td><td>4.11</td><td>5.47†</td><td>18.70</td></tr>
+            <tr><th scope="row">LLaVA-NeXT-Video-32B</th><td>25.89</td><td>27.01</td><td>27.13*</td><td>23.61</td><td>13.80*</td><td>23.49</td></tr>
+            <tr><th scope="row">MiniCPM-V-4.5</th><td>37.30</td><td>29.19</td><td>43.04</td><td>28.27</td><td>29.43</td><td>33.45</td></tr>
+            <tr><th scope="row">GLM-4.6V-Flash-9B</th><td>40.80</td><td>28.85</td><td>42.30</td><td>28.81</td><td>32.36</td><td>34.62</td></tr>
+            <tr><th scope="row">LLaVA-OneVision-70B</th><td>42.74</td><td>26.73</td><td>47.30</td><td>33.03</td><td>34.62</td><td>36.88</td></tr>
+            <tr><th scope="row">Qwen3-Omni-30B</th><td>46.28</td><td>33.17</td><td>51.69</td><td>39.81</td><td>41.78</td><td>42.55</td></tr>
+            <tr><th scope="row">InternVL3.5-38B</th><td>45.35</td><td>28.05</td><td>46.16</td><td>32.19</td><td>37.07</td><td>37.76</td></tr>
+            <tr><th scope="row">Qwen3-VL-32B</th><td>50.97</td><td>35.49</td><td>60.42</td><td>44.38</td><td>50.16</td><td>48.28</td></tr>
+            <tr class="grp"><th colspan="7" scope="rowgroup">Closed-source general-purpose</th></tr>
+            <tr><th scope="row">GPT-5 (non-thinking)</th><td>56.13</td><td>37.26</td><td>70.74</td><td>52.36</td><td>58.22</td><td>54.94</td></tr>
+            <tr><th scope="row">Gemini-3-Pro</th><td>54.32</td><td>40.55</td><td>70.74</td><td>51.48</td><td>56.05</td><td>54.63</td></tr>
+            <tr><th scope="row">GPT-5 (thinking)</th><td>56.61</td><td>41.56</td><td>77.11</td><td>53.75</td><td>60.79</td><td>57.96</td></tr>
+            <tr class="ours"><th scope="row">TRACER (ours)</th><td>61.67</td><td>49.53</td><td>84.55</td><td>59.47</td><td>63.59</td><td>63.76</td></tr>
+          </tbody>
+        </table>
+        <p class="note">* marks cells with substantial parsing failures, and † cells where most outputs could not be parsed.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Human and model performance on the same 50 questions per task (Appendix A.7)</caption>
+          <thead><tr><th scope="col">Model / Human</th><th scope="col">T1</th><th scope="col">T2</th><th scope="col">T3</th><th scope="col">T4</th><th scope="col">T5</th><th scope="col">Avg.</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Human</th><td>83.60</td><td>72.32</td><td>85.55</td><td>78.90</td><td>75.40</td><td>79.15</td></tr>
+            <tr><th scope="row">GPT-5 (thinking)</th><td>57.97</td><td>41.87</td><td>75.80</td><td>57.61</td><td>60.48</td><td>58.75</td></tr>
+            <tr><th scope="row">GPT-5 (non-thinking)</th><td>55.21</td><td>36.00</td><td>68.12</td><td>61.06</td><td>59.09</td><td>55.89</td></tr>
+            <tr><th scope="row">Gemini-3-Pro</th><td>55.59</td><td>41.53</td><td>68.00</td><td>60.19</td><td>54.18</td><td>55.90</td></tr>
+            <tr><th scope="row">Qwen3-VL-32B</th><td>50.56</td><td>34.26</td><td>63.66</td><td>49.00</td><td>50.68</td><td>49.63</td></tr>
+            <tr><th scope="row">Qwen3-Omni-30B</th><td>49.32</td><td>29.37</td><td>54.32</td><td>42.68</td><td>41.55</td><td>43.45</td></tr>
+            <tr><th scope="row">InternVL3.5-38B</th><td>48.00</td><td>28.64</td><td>44.05</td><td>34.94</td><td>35.16</td><td>38.16</td></tr>
+            <tr class="ours"><th scope="row">TRACER (ours)</th><td>60.78</td><td>49.91</td><td>84.39</td><td>60.21</td><td>62.59</td><td>63.58</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Human scores average two participants.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================== CASES ============================== -->
+<section class="section" id="cases" aria-labelledby="cases-title">
+  <div class="wrap">
+    <p class="eyebrow">Case studies</p>
+    <h2 id="cases-title">TRACER on four tasks</h2>
+    <p class="section-lede">Each panel shows the task input, selected observations and appraisal readings, the construct outputs, and a comparison with the reference and two baselines.</p>
+
+    <div class="tabs" role="tablist" aria-label="Case studies">
+      <button type="button" role="tab" id="tab-t1" aria-controls="panel-case" aria-selected="true" data-case="0"><span class="tchip">T1</span>Affect recognition</button>
+      <button type="button" role="tab" id="tab-t2" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-case="1"><span class="tchip">T2</span>Regulation decoding</button>
+      <button type="button" role="tab" id="tab-t3" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-case="2"><span class="tchip">T3</span>Cause reasoning</button>
+      <button type="button" role="tab" id="tab-t4" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-case="3"><span class="tchip">T4</span>Effect reasoning</button>
+    </div>
+    <div class="case-panel" id="panel-case" role="tabpanel" aria-labelledby="tab-t1">
+      <p class="case-ctx" id="case-ctx">The defendant's response when Kevin explains the defense strategy.</p>
+      <button type="button" class="case-img" id="case-open" aria-label="Enlarge case study">
+        <img id="case-img" src="assets/img/figures/fig12-t1.webp" alt="Case study for T1, grounded affect recognition." loading="lazy" width="2000" height="1316">
+      </button>
+      <p class="note">From Fig. 12 of the paper. Text is condensed from the source records. The T1 example comes from a separate illustrative run.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PAPER ============================== -->
+<section class="section" id="paper" aria-labelledby="paper-title">
+  <div class="wrap paper-grid">
+    <div class="paper-abstract">
+      <p class="eyebrow">Paper</p>
+      <h2 id="paper-title">Abstract</h2>
+      <div class="abstract">
+        <p>Affective computing has progressed from traditional categorical emotion recognition with small specialized models to open-ended affective analysis with large models, lifting recognition performance to unprecedented levels. However, theories in affective science describe emotion as an unfolding process involving causally interacting components, with appraisal, regulation, and social interpretation shaping its emergence, expression, and consequences. Computational modeling and evaluation of this full process remain largely unexplored in the field.</p>
+        <details class="abstract-more">
+          <summary><span class="when-closed">Read full abstract</span><span class="when-open">Show less</span><span class="expand-mark" aria-hidden="true"></span></summary>
+          <div class="abstract-rest">
+        <p>To this end, this paper proposes the TRACE framework, which formalizes an affective episode through three interrelated stages, Condition, Affect, and Effect, incorporating both observable cues and cognitive factors such as the subject's internal stance toward the situation and strategic regulation of emotional display. Based on this formalization, we present <b>TRACE-Bench</b>, a benchmark for evaluating multimodal models on affective understanding in real-world social scenes, which comprises five tasks with widening structural spans, from grounded affect recognition, regulation decoding, and cause reasoning to effect reasoning and full-chain reconstruction, covering 3,746 structured question-answer pairs over 646 videos.</p>
+        <p>A matched human–model comparison reveals a substantial gap to human performance. Across the full benchmark, the evaluated affect-specialized models also generally lag behind general-purpose MLLMs. Analysis of model outputs identifies recurring failure patterns, including treating displayed behavior as genuine feeling and fabricating plausible but unsupported events during long-chain generation. Motivated by these findings, we propose <b>TRACER</b>, a cognition-grounded structured reasoning method. Each derivation step couples a natural-language inference with explicit premise citations drawn from factual observations, cognitive appraisals, and established upstream conclusions. The linked steps form a traceable graph of intermediate and target conclusions. Experiments show that TRACER outperforms all evaluated model baselines on each of the five tasks.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="resources">
+      <aside aria-labelledby="res-list-title">
+      <h3 id="res-list-title" class="side-title">Resources</h3>
+      <ul class="res-list">
+        <li><span class="res-off" data-link="arxiv"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg><span>Paper on arXiv</span><small>soon</small></span></li>
+        <li><span class="res-off" data-link="huggingface"><img class="brand-icon" src="assets/img/huggingface.svg" width="20" height="20" alt="" aria-hidden="true"><span>TRACE-Bench on Hugging Face</span><small>soon</small></span></li>
+        <li><a href="https://github.com/cogaffc/TRACER" data-link="github"><img class="brand-icon" src="assets/img/github.svg" width="20" height="20" alt="" aria-hidden="true"><span>TRACER code on GitHub</span><small>cogaffc/TRACER</small></a></li>
+      </ul>
+      </aside>
+      <div class="citation" id="bibtex" role="region" aria-labelledby="bib-title">
+        <div class="citation-heading">
+          <h3 class="side-title" id="bib-title">BibTeX</h3>
+          <button type="button" class="copy-btn" data-copy="#bib-text" aria-label="Copy BibTeX citation" aria-live="polite">Copy</button>
+        </div>
+        <div class="bib">
+<pre id="bib-text">@misc{li2026trace,
+  title  = {Cognition-Oriented Emotion Tracing from Causes
+            to Consequences in Real-World Social Scenes},
+  author = {Li, Hao and Zhang, Jinye and Li, Bobo and
+            Lee, Mong-Li and Hsu, Wynne and Wang, Zheng and
+            Fei, Hao and Zhang, Min},
+  year   = {2026},
+  note   = {Research manuscript}
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p><b>TRACE</b> · Cognition-Oriented Emotion Tracing from Causes to Consequences in Real-World Social Scenes</p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Figure viewer">
+  <form method="dialog"><button class="lb-close" aria-label="Close">×</button></form>
+  <img id="lb-img" alt="">
+  <p id="lb-cap" class="lb-cap"></p>
+</dialog>
+<div class="tooltip" id="tooltip" role="status" hidden></div>
+
+<script src="assets/js/main.js?v=20261008-4" defer></script>
+</body>
+</html>
