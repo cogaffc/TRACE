@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-21">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-22">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -382,6 +382,44 @@
   </div>
 </section>
 
+<section class="section" id="analysis" aria-labelledby="analysis-title">
+  <div class="wrap">
+    <h2 id="analysis-title">Experimental Analysis</h2>
+    <div class="analysis-tabs" role="tablist" aria-label="Experimental analyses">
+      <button type="button" role="tab" id="analysis-tab-evidence" aria-controls="analysis-evidence" aria-selected="true">Evidence</button>
+      <button type="button" role="tab" id="analysis-tab-family" aria-controls="analysis-family" aria-selected="false" tabindex="-1">Model families</button>
+      <button type="button" role="tab" id="analysis-tab-state" aria-controls="analysis-state" aria-selected="false" tabindex="-1">T1 Recognition</button>
+      <button type="button" role="tab" id="analysis-tab-tactic" aria-controls="analysis-tactic" aria-selected="false" tabindex="-1">T2 Regulation</button>
+      <button type="button" role="tab" id="analysis-tab-cause" aria-controls="analysis-cause" aria-selected="false" tabindex="-1">T3 Cause</button>
+      <button type="button" role="tab" id="analysis-tab-effect" aria-controls="analysis-effect" aria-selected="false" tabindex="-1">T4 Effect</button>
+    </div>
+    <div class="analysis-panel" id="analysis-evidence" role="tabpanel" aria-labelledby="analysis-tab-evidence" tabindex="0">
+      <button type="button" class="analysis-figure" data-lightbox="assets/img/figures/fig7-evidence.svg" data-caption="Fig. 7. Evidence ablation." aria-label="Enlarge evidence ablation figure"><img src="assets/img/figures/fig7-evidence.svg" alt="Paper Figure 7: task scores with question-only, subtitles, frames, and joint evidence." loading="lazy"></button>
+      <div class="analysis-copy"><h3>Evidence Ablation</h3><p>Joint subtitles and frames outperform question-only input and either channel alone on all five tasks for both evaluated models.</p><p>Both models favor subtitles on T3 and T5. Increasing GPT-5 from eight to 16 frames yields small gains on four tasks and a slight decrease on T2. Combining evidence channels provides a more consistent benefit than denser visual sampling.</p><p class="note">Fig. 7. Q includes the question and supplied fields. Frames: 8 for GPT-5, 60 for Qwen. Both (16f): GPT-5 with subtitles and 16 frames.</p></div>
+    </div>
+    <div class="analysis-panel" id="analysis-family" role="tabpanel" aria-labelledby="analysis-tab-family" tabindex="0" hidden>
+      <button type="button" class="analysis-figure" data-lightbox="assets/img/figures/fig6b-preferences.svg" data-caption="Fig. 6(b). Model family task preferences." aria-label="Enlarge model family preferences"><img src="assets/img/figures/fig6b-preferences.svg" alt="Paper Figure 6(b): relative task preferences across model families." loading="lazy"></button>
+      <div class="analysis-copy"><h3>Model Family Preferences</h3><p>Affect-specialized models favor recognition and regulation but show a pronounced weakness in cause reasoning. Closed-source models show the opposite profile, with relative strengths in cause reasoning and full-chain reconstruction.</p><p>Open-source general-purpose models are more balanced across individual tasks but show a deficit in full-chain reconstruction.</p><p class="note">Fig. 6(b). Scores are centered by family and task averages. These are relative preferences, not absolute rankings across families.</p></div>
+    </div>
+    <div class="analysis-panel" id="analysis-state" role="tabpanel" aria-labelledby="analysis-tab-state" tabindex="0" hidden>
+      <button type="button" class="analysis-figure" data-lightbox="assets/img/figures/fig8-state.svg" data-caption="Fig. 8. T1 label confusions." aria-label="Enlarge recognition error analysis"><img src="assets/img/figures/fig8-state.svg" alt="Paper Figure 8: flows from true to predicted category, intensity, and polarity." loading="lazy"></button>
+      <div class="analysis-copy"><h3>Recognition Errors</h3><p>Higher State scores still mask errors in category, intensity, and mixed polarity.</p><p>Confusions recur between fear and anxiety, and between anger and frustration. Low- and high-intensity states frequently shift toward medium, while mixed polarity is often reduced to a single polarity.</p><p class="note">Fig. 8. True labels are on the left; predictions are on the right. Band widths show proportions within each true class.</p></div>
+    </div>
+    <div class="analysis-panel" id="analysis-tactic" role="tabpanel" aria-labelledby="analysis-tab-tactic" tabindex="0" hidden>
+      <button type="button" class="analysis-figure" data-lightbox="assets/img/figures/fig9-tactic.svg" data-caption="Fig. 9. T2 tactic confusion." aria-label="Enlarge regulation tactic confusion"><img src="assets/img/figures/fig9-tactic.svg" alt="Paper Figure 9: tactic confusion matrices for GPT-5 thinking and TRACER." loading="lazy"></button>
+      <div class="analysis-copy"><h3>Regulation Over-Detection</h3><p>Models frequently infer active regulation when the reference tactic is None. False-alarm rates range from 76% to 96% across GPT-5 (thinking), Qwen3-VL, and TRACER.</p><p>TRACER identifies Suppression and Amplification more often than GPT-5 (thinking), but recognizes None less often. Improved tactic recognition does not eliminate over-detection.</p><p class="note">Fig. 9 shows GPT-5 (thinking) and TRACER. Rows: reference; columns: prediction; values: row percentages. Fabrication is omitted from both axes.</p></div>
+    </div>
+    <div class="analysis-panel" id="analysis-cause" role="tabpanel" aria-labelledby="analysis-tab-cause" tabindex="0" hidden>
+      <button type="button" class="analysis-figure" data-lightbox="assets/img/figures/fig10-cause.svg" data-caption="Fig. 10. External Reality and Internal Driver scores." aria-label="Enlarge cause component comparison"><img src="assets/img/figures/fig10-cause.svg" alt="Paper Figure 10: External Reality versus Internal Driver scores by model." loading="lazy"></button>
+      <div class="analysis-copy"><h3>External Reality and Internal Driver</h3><p>All evaluated models score lower on Internal Driver than on External Reality.</p><p>Thinking improves GPT-5's Internal Driver score more than External Reality, narrowing the gap. TRACER scores highest on both components, but Internal Driver remains lower-scoring.</p><p class="note">Fig. 10. The dashed line marks equal scores. The arrow shows GPT-5's change with thinking.</p></div>
+    </div>
+    <div class="analysis-panel" id="analysis-effect" role="tabpanel" aria-labelledby="analysis-tab-effect" tabindex="0" hidden>
+      <button type="button" class="analysis-figure" data-lightbox="assets/img/figures/fig11-effect.svg" data-caption="Fig. 11. Effect-channel scores on other-directed instances." aria-label="Enlarge effect channel comparison"><img src="assets/img/figures/fig11-effect.svg" alt="Paper Figure 11: Mental, Affective, and Physical Effect scores by model." loading="lazy"></button>
+      <div class="analysis-copy"><h3>Effect Channels</h3><p>Physical Effect is the lowest-scoring channel for the general-purpose baselines, both in the full evaluation and in the other-directed subset shown here.</p><p>TRACER achieves the highest Mental and Physical Effect scores in both scopes. Its Affective Effect score remains close to GPT-5 (thinking), so gains are uneven across channels.</p><p class="note">Fig. 11. Other-directed instances only. Dashed lines separate TRACER and the three baseline families.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================== CASES ============================== -->
 <section class="section" id="cases" aria-labelledby="cases-title">
   <div class="wrap">
@@ -466,6 +504,6 @@
 </dialog>
 <div class="tooltip" id="tooltip" role="status" hidden></div>
 
-<script src="assets/js/main.js?v=20261008-4" defer></script>
+<script src="assets/js/main.js?v=20261008-5" defer></script>
 </body>
 </html>

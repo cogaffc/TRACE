@@ -660,13 +660,37 @@
     });
   }
 
+  function initAnalysis() {
+    var tabs = Array.from(document.querySelectorAll('.analysis-tabs [role="tab"]'));
+    function choose(index, focus) {
+      tabs.forEach(function (tab, i) {
+        tab.setAttribute('aria-selected', String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+        document.getElementById(tab.getAttribute('aria-controls')).hidden = i !== index;
+      });
+      if (focus) tabs[index].focus();
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { choose(i, false); });
+      tab.addEventListener('keydown', function (e) {
+        var next;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i + tabs.length - 1) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        else return;
+        e.preventDefault(); choose(next, true);
+      });
+    });
+  }
+
   function drawAll() { drawResults(); drawHuman(); drawFamily(); drawSurface(); drawFab(); }
   var rt;
   window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { drawAll(); alignConnectors(); }, 120); });
   window.addEventListener('scroll', hideTip, { passive: true });
 
   initLinks(); initHeader(); initNav(); buildSpans(); initDefs(); initCases(); initLightbox(); initResultsToggle(); initCopy(); initBlueprintTasks();
-  drawDerivation(); drawAll(); alignConnectors();
+  initAnalysis(); drawDerivation(); drawAll(); alignConnectors();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignConnectors);
   window.addEventListener('load', alignConnectors);
 })();
