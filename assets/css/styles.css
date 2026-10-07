@@ -33,8 +33,8 @@
   --serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
   --sans: "Source Sans 3", "Source Sans Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: var(--sans);
-  --wrap: 1120px;
-  --gutter: 28px;
+  --wrap: 1040px;
+  --gutter: 32px;
   --r: 14px;
   --shadow: 0 1px 2px rgba(23,33,58,.04), 0 10px 28px -16px rgba(23,33,58,.14);
 }
@@ -76,8 +76,8 @@ sup { line-height: 0; }
 
 /* ---------- type ---------- */
 .eyebrow { position: relative; font: 600 12px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.section { padding: 32px 0; }
-.section + .section > .wrap { position: relative; padding-top: 24px; }
+.section { padding: 24px 0; }
+.section + .section > .wrap { position: relative; padding-top: 16px; }
 .section + .section > .wrap::before { content: ""; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); height: 1px; background: var(--rule); }
 .section h2 { font: 600 30px/1.2 var(--serif); letter-spacing: -.01em; }
 .section-lede { margin-top: 14px; font-size: 17.5px; line-height: 1.6; color: var(--ink-2); }
@@ -481,8 +481,8 @@ tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
   .hero-sum { font-size: 16.5px; }
   .links { gap: 8px; }
   .pill { padding-inline: 10px; }
-  .section { padding: 32px 0; }
-  .section + .section > .wrap { padding-top: 24px; }
+  .section { padding: 20px 0; }
+  .section + .section > .wrap { padding-top: 16px; }
   .bp-controls { gap: 6px; }
   .bp-controls button { flex: 1 0 auto; padding: 8px 10px; }
   .bp-controls button span { display: none; }
