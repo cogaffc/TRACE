@@ -468,7 +468,7 @@ tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
   .row-nodes { padding: 0; gap: 8px; }
 }
 @media (max-width: 760px) {
-  :root { --gutter: 16px; }
+  :root { --gutter: clamp(20px, 4vw, 32px); }
   body { font-size: 15.5px; }
   .menu-btn { display: inline-block; }
   .site-nav { display: none; position: absolute; top: 56px; right: 12px; left: 12px; flex-direction: column; gap: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 6px; box-shadow: 0 10px 30px rgba(23,33,58,.12); }
