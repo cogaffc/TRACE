@@ -25,7 +25,7 @@
       <a href="#motivation">Motivation</a>
       <a href="#blueprint">Blueprint</a>
       <a href="#benchmark">Benchmark</a>
-      <a href="#findings">Findings</a>
+      <a href="#findings">Evaluation</a>
       <a href="#tracer">TRACER</a>
       <a href="#results">Results</a>
       <a href="#cases">Cases</a>
@@ -66,8 +66,7 @@
 <!-- ============================== MOTIVATION ============================== -->
 <section class="section" id="motivation" aria-labelledby="mot-title">
   <div class="wrap">
-    <p class="eyebrow">Motivation</p>
-    <h2 id="mot-title">From local labels to the whole episode</h2>
+    <h2 id="mot-title">Motivation</h2>
     <p class="section-lede">Existing affective benchmarks often evaluate local targets such as affective states or causes. TRACE-Bench asks five complementary questions about one episode, from the conditions that give rise to an emotion, through the regulation that reshapes its expression, to the consequences it produces for the subject or other participants.</p>
 
     <figure class="paper-figure">
@@ -81,8 +80,7 @@
 <!-- ============================== BLUEPRINT ============================== -->
 <section class="section" id="blueprint" aria-labelledby="bp-title">
   <div class="wrap">
-    <p class="eyebrow">Affective Blueprint</p>
-    <h2 id="bp-title">A formal representation of an affective episode</h2>
+    <h2 id="bp-title">Affective Blueprint</h2>
     <p class="section-lede">The Blueprint represents a subject-centered affective episode through three causally connected stages, Condition, Affect, and Effect. Each stage is decomposed into components, each represented by a set of fields. Three theories each anchor one stage of the chain.</p>
 
     <div class="bp-controls" role="group" aria-label="Highlight task constructs">
@@ -200,8 +198,7 @@
 <!-- ============================== BENCHMARK ============================== -->
 <section class="section" id="benchmark" aria-labelledby="bench-title">
   <div class="wrap">
-    <p class="eyebrow">TRACE-Bench</p>
-    <h2 id="bench-title">Five tasks with widening structural spans</h2>
+    <h2 id="bench-title">TRACE-Bench</h2>
     <p class="section-lede">Each task takes a multimodal social video with aligned subtitles as input. The tasks differ in which Blueprint constructs are supplied as known and which are queried, covering within-stage reasoning (T1–T2), cross-stage reasoning (T3–T4), and full-chain reconstruction (T5).</p>
 
     <dl class="stats">
@@ -225,7 +222,7 @@
     </figure>
 
     <div class="pipeline">
-      <h3 class="pipe-title">How the benchmark is built</h3>
+      <h3 class="pipe-title">Benchmark Construction</h3>
       <ol class="pipe">
         <li><span class="pn">1</span><h4>Source collection</h4><p>Social clips from Movie-clips, EQ4You, and Social-IQ are screened by an MLLM and verified during annotation.</p></li>
         <li><span class="pn">2</span><h4>Chain annotation</h4><p>An MLLM drafts subject-centered chains; annotators reject, correct, add, and verify them against the video.</p></li>
@@ -239,35 +236,34 @@
 <!-- ============================== FINDINGS ============================== -->
 <section class="section" id="findings" aria-labelledby="find-title">
   <div class="wrap">
-    <p class="eyebrow">Findings</p>
-    <h2 id="find-title">What the evaluation reveals</h2>
+    <h2 id="find-title">Evaluation Analysis</h2>
     <p class="section-lede">Open-source, closed-source, and affect-specialized MLLMs were evaluated on TRACE-Bench, alongside two diagnostic studies of their outputs.</p>
 
     <div class="findings">
       <article class="finding" style="--accent: var(--s-human)">
         <p class="f-num">01</p>
-        <h3>Models remain far below humans</h3>
+        <h3>Human vs. Model Performance</h3>
         <p class="f-key"><b>15.57</b> points between humans and TRACER</p>
         <div class="viz" id="viz-human" role="img" aria-label="Average score on the same 50 questions per task: humans 79.15, TRACER 63.58, GPT-5 thinking 58.75."></div>
         <p class="f-text">On the same 50 questions per task, humans average 79.15, TRACER 63.58, and GPT-5 (thinking) 58.75.</p>
       </article>
       <article class="finding" style="--accent: var(--s-affect)">
         <p class="f-num">02</p>
-        <h3>Affect-specialized models generally lag behind general-purpose MLLMs</h3>
+        <h3>Model Family Comparison</h3>
         <p class="f-key"><b>21.47</b> best affect-specialized average, against <b>57.96</b> for GPT-5 (thinking)</p>
         <div class="viz" id="viz-family" role="img" aria-label="Average score of each baseline, grouped by family."></div>
         <p class="f-text">Each dot is one baseline's average over the five tasks on the full benchmark.</p>
       </article>
       <article class="finding" style="--accent: var(--s-gpt)">
         <p class="f-num">03</p>
-        <h3>Models mistake Manifestation for State</h3>
+        <h3>State Attribution</h3>
         <p class="f-key"><b>19%</b> of GPT-5 descriptions, <b>27%</b> for Qwen3-VL</p>
         <div class="viz" id="viz-surface" role="img" aria-label="State attribution where State and Manifestation differ, with and without appraisal records."></div>
         <p class="f-text">At moments where State and Manifestation differ in category, supplying appraisal records raises correct State attribution from 50% to 60% for GPT-5 and from 40% to 51% for Qwen3-VL.</p>
       </article>
       <article class="finding" style="--accent: var(--s-tracer)">
         <p class="f-num">04</p>
-        <h3>Fabrication concentrates in downstream Effect</h3>
+        <h3>Fabrication Analysis</h3>
         <p class="f-key"><b>17.3%</b> of GPT-5's physical-effect claims are fabricated; TRACER, <b>3.3%</b></p>
         <div class="viz" id="viz-fab" role="img" aria-label="Fabricated claims by chain stage for GPT-5 thinking and TRACER."></div>
         <p class="f-text">Full-chain outputs are checked against video frames and subtitles in External Reality, Manifestation, and Physical Effect. TRACER reduces the aggregate fabrication rate from 11.0% to 4.7%.</p>
@@ -283,8 +279,7 @@
 <!-- ============================== TRACER ============================== -->
 <section class="section" id="tracer" aria-labelledby="tracer-title">
   <div class="wrap">
-    <p class="eyebrow">TRACER</p>
-    <h2 id="tracer-title">Cognition-grounded structured reasoning</h2>
+    <h2 id="tracer-title">TRACER</h2>
     <p class="section-lede">Each derivation step couples a natural-language inference with explicit premise citations drawn from factual observations, cognitive appraisals, and established upstream conclusions. The linked steps form a traceable graph of intermediate and target conclusions.</p>
 
     <figure class="method-overview">
@@ -296,7 +291,7 @@
       <summary>Explore the premise links in Fig. 5(b)</summary>
     <figure class="derivation">
       <div class="deriv-head">
-        <h3>An abridged derivation from the running example</h3>
+        <h3>Derivation Example</h3>
         <p>Select a conclusion to see the premises it cites.</p>
       </div>
       <div class="deriv-legend" aria-hidden="true">
@@ -316,8 +311,7 @@
 <!-- ============================== RESULTS ============================== -->
 <section class="section" id="results" aria-labelledby="res-title">
   <div class="wrap">
-    <p class="eyebrow">Results</p>
-    <h2 id="res-title">TRACER outperforms every model baseline on each task</h2>
+    <h2 id="res-title">Main Results</h2>
     <p class="section-lede">Differences are significant on every task (p &lt; 0.05, bootstrap test, Holm-corrected). The largest gains appear in regulation decoding and cause reasoning.</p>
 
     <dl class="tiles">
@@ -391,8 +385,7 @@
 <!-- ============================== CASES ============================== -->
 <section class="section" id="cases" aria-labelledby="cases-title">
   <div class="wrap">
-    <p class="eyebrow">Case studies</p>
-    <h2 id="cases-title">TRACER on four tasks</h2>
+    <h2 id="cases-title">Case Studies</h2>
     <p class="section-lede">Each panel shows the task input, selected observations and appraisal readings, the construct outputs, and a comparison with the reference and two baselines.</p>
 
     <div class="tabs" role="tablist" aria-label="Case studies">
@@ -415,7 +408,6 @@
 <section class="section" id="paper" aria-labelledby="paper-title">
   <div class="wrap paper-grid">
     <div class="paper-abstract">
-      <p class="eyebrow">Paper</p>
       <h2 id="paper-title">Abstract</h2>
       <div class="abstract">
         <p>Affective computing has progressed from traditional categorical emotion recognition with small specialized models to open-ended affective analysis with large models, lifting recognition performance to unprecedented levels. However, theories in affective science describe emotion as an unfolding process involving causally interacting components, with appraisal, regulation, and social interpretation shaping its emergence, expression, and consequences. Computational modeling and evaluation of this full process remain largely unexplored in the field.</p>
