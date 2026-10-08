@@ -241,13 +241,12 @@ sup { line-height: 0; }
 .theory p:not(.th-name) { font-size: 13.5px; line-height: 1.55; color: var(--ink-2); }
 
 /* ---------- benchmark ---------- */
-.stats { margin: 36px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
-.stats > div { display: grid; grid-row: span 3; grid-template-rows: subgrid; padding: 18px 20px 16px; }
-.stats > div + div { border-left: 1px solid var(--rule-2); }
-.stats dt { font: 600 11.5px/1.3 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.stats dd { margin: 6px 0 0; font: 600 30px/1.1 var(--serif); color: var(--ink); }
+.stats { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 10px 28px; padding: 12px 0; border-block: 1px solid var(--rule); }
+.stats > div { display: flex; align-items: baseline; gap: 8px; }
+.stats dt { order: 2; font: 400 14px/1.3 var(--sans); color: var(--ink-2); }
+.stats dd { margin: 0; font: 600 20px/1.1 var(--sans); color: var(--ink); font-variant-numeric: tabular-nums; }
 .stats p { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
-.spans { margin: 24px 0 0; }
+.spans { margin: 16px 0 0; }
 .spans-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
 .spans-legend span { display: inline-flex; align-items: center; }
 .mk { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
@@ -265,8 +264,8 @@ sup { line-height: 0; }
 .sg-cons span { text-align: center; font-size: 12.5px; line-height: 1.3; color: var(--ink-2); padding: 0 4px; }
 .sg-cons .h-task { text-align: left; color: var(--muted); }
 .sg-cons .h-qa { text-align: right; color: var(--muted); }
-.sg-group { padding: 14px 0 2px; font: 600 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.sg-row { min-height: 52px; border-bottom: 1px solid var(--rule-2); border-radius: 8px; transition: background .15s; }
+.sg-group { padding: 10px 0 2px; font: 600 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.sg-row { min-height: 44px; border-bottom: 1px solid var(--rule-2); border-radius: 8px; transition: background .15s; }
 .sg-row:hover, .sg-row:focus-visible { background: var(--well); outline: none; }
 .sg-row:last-child { border-bottom: 0; }
 .sg-name { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: 10px; font: 500 14.5px/1.3 var(--sans); color: var(--ink); padding-right: 12px; }
@@ -280,8 +279,8 @@ sup { line-height: 0; }
 .sg-count { grid-column: 8; text-align: right; font-size: 14px; color: var(--ink); font-variant-numeric: tabular-nums; }
 .sg-count small { display: block; font-size: 12px; color: var(--muted); }
 .spans > .note { margin-top: 12px; }
-.pipeline { margin-top: 44px; }
-.pipe-title { font: 600 18px/1.3 var(--serif); }
+.pipeline { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.pipe-title { font: 600 15px/1.4 var(--sans); cursor: pointer; }
 .pipe { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
 .pipe li { position: relative; display: grid; grid-row: span 3; grid-template-rows: subgrid; }
 .pipe li:not(:last-child)::before { content: ""; position: absolute; top: 14px; left: 40px; right: -10px; height: 1px; background: var(--node); }
@@ -528,10 +527,9 @@ tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
   .findings, .tiles { grid-template-columns: 1fr; }
   .tiles { row-gap: 12px; }
   .tiles > div { display: block; grid-row: auto; }
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .stats > div:nth-child(3) { border-left: 0; }
-  .stats > div:nth-child(n+3) { border-top: 1px solid var(--rule-2); }
-  .stats dd, .tiles dd { font-size: 26px; }
+  .stats { gap: 8px 18px; }
+  .stats dd { font-size: 19px; }
+  .tiles dd { font-size: 26px; }
   .derivation { padding: 14px 0; }
   .band { padding: 12px 10px 14px; }
   .nodes.three { gap: 6px; }
