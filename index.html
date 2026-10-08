@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-27">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-28">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -242,28 +242,28 @@
       <article class="finding" style="--accent: var(--s-human)">
         <p class="f-num">01</p>
         <h3>Human vs. Model Performance</h3>
-        <p class="f-key"><b>15.57</b> points between humans and TRACER</p>
+        <p class="f-key">Humans score <b>15.57 points higher</b> than TRACER.</p>
         <div class="viz" id="viz-human" role="img" aria-label="Average score on the same 50 questions per task: humans 79.15, TRACER 63.58, GPT-5 thinking 58.75."></div>
         <p class="f-text">On the same 50 questions per task, humans average 79.15, TRACER 63.58, and GPT-5 (thinking) 58.75.</p>
       </article>
       <article class="finding" style="--accent: var(--s-affect)">
         <p class="f-num">02</p>
         <h3>Model Family Comparison</h3>
-        <p class="f-key"><b>21.47</b> best affect-specialized average, against <b>57.96</b> for GPT-5 (thinking)</p>
+        <p class="f-key">The best emotion-focused model averages <b>21.47</b>, compared with <b>57.96</b> for GPT-5 (thinking).</p>
         <div class="viz" id="viz-family" role="img" aria-label="Average score of each baseline, grouped by family."></div>
         <p class="f-text">Each dot is one baseline's average over the five tasks on the full benchmark.</p>
       </article>
       <article class="finding" style="--accent: var(--s-gpt)">
         <p class="f-num">03</p>
         <h3>State Attribution</h3>
-        <p class="f-key"><b>19%</b> of GPT-5 descriptions, <b>27%</b> for Qwen3-VL</p>
+        <p class="f-key">Models sometimes mistake <b>what people show</b> for <b>what they actually feel</b>.</p>
         <div class="viz" id="viz-surface" role="img" aria-label="State attribution where State and Manifestation differ, with and without appraisal records."></div>
-        <p class="f-text">At moments where State and Manifestation differ in category, supplying appraisal records raises correct State attribution from 50% to 60% for GPT-5 and from 40% to 51% for Qwen3-VL.</p>
+        <p class="f-text">In the tested moments where feelings and expressions differ, GPT-5 makes this mistake in 19% of descriptions and Qwen3-VL in 27%. Giving the models an analysis of each character's situation improves correct identification of feelings from 50% to 60% and from 40% to 51%, respectively.</p>
       </article>
       <article class="finding" style="--accent: var(--s-tracer)">
         <p class="f-num">04</p>
         <h3>Unsupported-Content Audit</h3>
-        <p class="f-key"><b>17.3%</b> of GPT-5's physical-effect claims are fabricated; TRACER, <b>3.3%</b></p>
+        <p class="f-key">For claims about what people do next, <b>17.3%</b> are made up by GPT-5, compared with <b>3.3%</b> by TRACER.</p>
         <div class="viz" id="viz-fab" role="img" aria-label="Fabricated claims by chain stage for GPT-5 thinking and TRACER."></div>
         <p class="f-text">Full-chain outputs are checked against video frames and subtitles in External Reality, Manifestation, and Physical Effect. TRACER reduces the aggregate fabrication rate from 11.0% to 4.7%.</p>
       </article>
