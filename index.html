@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-34">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-35">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -29,7 +29,6 @@
       <a href="#tracer">TRACER</a>
       <a href="#results">Results</a>
       <a href="#cases">Cases</a>
-      <a href="#paper" class="nav-paper">Paper</a>
     </nav>
   </div>
 </header>
@@ -455,22 +454,9 @@
   </div>
 </section>
 
-<!-- ============================== PAPER ============================== -->
-<section class="section" id="paper" aria-labelledby="paper-title">
+<!-- ============================== CITATION ============================== -->
+<section class="section" id="paper" aria-labelledby="bib-title">
   <div class="wrap paper-grid">
-    <div class="paper-abstract">
-      <h2 id="paper-title">Abstract</h2>
-      <div class="abstract">
-        <p>Affective computing has progressed from traditional categorical emotion recognition with small specialized models to open-ended affective analysis with large models, lifting recognition performance to unprecedented levels. However, theories in affective science describe emotion as an unfolding process involving causally interacting components, with appraisal, regulation, and social interpretation shaping its emergence, expression, and consequences. Computational modeling and evaluation of this full process remain largely unexplored in the field.</p>
-        <details class="abstract-more">
-          <summary><span class="when-closed">Read full abstract</span><span class="when-open">Show less</span><span class="expand-mark" aria-hidden="true"></span></summary>
-          <div class="abstract-rest">
-        <p>To this end, this paper proposes the TRACE framework, which formalizes an affective episode through three interrelated stages, Condition, Affect, and Effect, incorporating both observable cues and cognitive factors such as the subject's internal stance toward the situation and strategic regulation of emotional display. Based on this formalization, we present <b>TRACE-Bench</b>, a benchmark for evaluating multimodal models on affective understanding in real-world social scenes, which comprises five tasks with widening structural spans, from grounded affect recognition, regulation decoding, and cause reasoning to effect reasoning and full-chain reconstruction, covering 3,746 structured question-answer pairs over 646 videos.</p>
-        <p>A matched human–model comparison reveals a substantial gap to human performance. Across the full benchmark, the evaluated affect-specialized models also generally lag behind general-purpose MLLMs. Analysis of model outputs identifies recurring failure patterns, including treating displayed behavior as genuine feeling and fabricating plausible but unsupported events during long-chain generation. Motivated by these findings, we propose <b>TRACER</b>, a cognition-grounded structured reasoning method. Each derivation step couples a natural-language inference with explicit premise citations drawn from factual observations, cognitive appraisals, and established upstream conclusions. The linked steps form a traceable graph of intermediate and target conclusions. Experiments show that TRACER outperforms all evaluated model baselines on each of the five tasks.</p>
-          </div>
-        </details>
-      </div>
-    </div>
     <div class="resources">
       <div class="citation" id="bibtex" role="region" aria-labelledby="bib-title">
         <div class="citation-heading">
