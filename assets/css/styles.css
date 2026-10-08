@@ -79,8 +79,10 @@ sup { line-height: 0; }
 .section { padding: 24px 0; }
 .section + .section > .wrap { position: relative; padding-top: 16px; }
 .section + .section > .wrap::before { content: ""; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); height: 1px; background: var(--rule); }
-.section h2 { font: 600 30px/1.2 var(--serif); letter-spacing: -.01em; }
-.section-lede { margin-top: 14px; font-size: 17.5px; line-height: 1.6; color: var(--ink-2); }
+.section h2 { font: 600 17px/1.6 var(--sans); }
+.section h2:has(+ .section-lede), .paper-abstract > h2 { display: inline; }
+.section h2:has(+ .section-lede)::after, .paper-abstract > h2::after { content: "."; }
+.section-lede { display: inline; margin: 0; font-size: 17px; line-height: 1.6; color: var(--ink-2); }
 .note { font-size: 13px; line-height: 1.55; color: var(--muted); margin-top: 12px; }
 .fig-link { margin-top: 18px; display: flex; gap: 18px; flex-wrap: wrap; align-items: baseline; }
 .note-inline { font-size: 13px; color: var(--muted); }
@@ -245,7 +247,6 @@ sup { line-height: 0; }
 .theory summary::after { content: " +"; color: var(--muted); font-family: var(--sans); }
 .theory details[open] summary::after { content: " −"; }
 .theory details:not([open]) .th-name { margin-bottom: 0; }
-#blueprint .section-lede { font-size: 16px; line-height: 1.5; margin-top: 8px; }
 #blueprint .fig-link { margin-top: 10px; font-size: 13px; }
 
 /* ---------- benchmark ---------- */
@@ -416,7 +417,9 @@ tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
 /* ---------- paper ---------- */
 .paper-grid { display: grid; gap: 36px; }
 .paper-abstract { min-width: 0; }
-.abstract { margin-top: 16px; display: grid; gap: 14px; font-size: 16px; line-height: 1.75; color: var(--ink-2); }
+.abstract { display: inline; font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+.abstract > p:first-child { display: inline; }
+.abstract-more { margin-top: 14px; }
 .abstract b { color: var(--ink); }
 .abstract-more summary { display: flex; align-items: center; width: fit-content; gap: 10px; list-style: none; cursor: pointer; color: var(--ink); font-size: 14px; font-weight: 600; padding: 4px 0; }
 .abstract-more summary::-webkit-details-marker { display: none; }
@@ -532,7 +535,7 @@ tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
   .bp-theories .th-name { font-size: 12.5px; }
   .bp-theories .th-name span { font-size: 10px; letter-spacing: .04em; }
   .bp-theories .theory:has(details[open]) { grid-column: 1 / -1; }
-  .section h2 { font-size: 24px; }
+  .section h2, .section-lede { font-size: 15.5px; }
   .resources { grid-template-columns: 1fr; gap: 28px; }
   .tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tabs [role="tab"] { justify-content: flex-start; text-align: left; }
