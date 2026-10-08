@@ -64,9 +64,7 @@ sup { line-height: 0; }
 .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); }
 .brand:hover { text-decoration: none; }
 .brand-name { font: 600 16px/1 var(--serif); letter-spacing: .08em; }
-.brand-mark { display: inline-flex; gap: 3px; align-items: center; }
-.brand-mark i { display: block; width: 6px; height: 6px; border-radius: 50%; }
-.brand-mark .c { background: var(--cond); } .brand-mark .a { background: var(--aff); } .brand-mark .e { background: var(--eff); }
+.brand-mark { display: block; width: 30px; height: 30px; flex: 0 0 30px; color: var(--ink); }
 .site-nav { display: flex; gap: 2px; }
 .site-nav a { font-size: 14px; color: var(--ink-2); padding: 6px 10px; border-radius: 8px; }
 .site-nav a:hover { color: var(--ink); background: rgba(23,33,58,.05); text-decoration: none; }
