@@ -421,12 +421,11 @@ tr.grp th { text-align: left; font-style: italic; color: var(--muted); padding-t
 tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
 
 /* ---------- cases ---------- */
-.tabs { margin-top: 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 8px; }
-.tabs [role="tab"] { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 8px 10px; border: 1px solid var(--rule); background: var(--surface); border-radius: 10px; cursor: pointer; font-size: 13.5px; color: var(--ink-2); }
-.tabs .tchip { flex: none; }
-.tabs [role="tab"][aria-selected="true"] { color: var(--ink); border-color: #9AA5B8; box-shadow: 0 1px 2px rgba(23,33,58,.06); }
-.case-panel { margin-top: 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); box-shadow: var(--shadow); padding: 18px; }
-.case-ctx { font: italic 15.5px/1.5 var(--serif); color: var(--ink-2); margin-bottom: 12px; }
+.case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; margin-top: 18px; }
+.case-grid figure { min-width: 0; margin: 0; }
+.case-grid figcaption { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+.case-grid figcaption span { color: var(--muted); font-size: 12px; font-weight: 500; }
+.case-grid img { width: 100%; height: auto; }
 .case-img { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
 .case-img img { border-radius: 6px; border: 1px solid var(--rule-2); }
 
@@ -554,8 +553,7 @@ tr.ours th, tr.ours td { font-weight: 600; color: var(--ink); }
   .section h2 { font-size: 20px; }
   .section-lede { font-size: 15.5px; }
   .resources { grid-template-columns: 1fr; gap: 28px; }
-  .tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tabs [role="tab"] { justify-content: flex-start; text-align: left; }
+  .case-grid { grid-template-columns: minmax(0, 1fr); }
   .abstract { font-size: 15.5px; }
   .contrast { padding: 14px 12px 12px; }
   .qgrid { grid-template-columns: 1fr 1fr; }

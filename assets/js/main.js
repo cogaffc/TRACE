@@ -501,36 +501,6 @@
     });
   }
 
-  /* -------------------------------------------------------------- case tabs */
-  var CASES = [
-    { img: 'assets/img/figures/fig12-t1.webp', w: 2000, h: 1316, ctx: 'The defendant’s response when Kevin explains the defense strategy.', alt: 'Case study for T1, grounded affect recognition.' },
-    { img: 'assets/img/figures/fig12-t2.webp', w: 2000, h: 1316, ctx: 'Focus on the colleague as Laura confronts him.', alt: 'Case study for T2, regulation decoding.' },
-    { img: 'assets/img/figures/fig12-t3.webp', w: 2000, h: 1627, ctx: 'The woman’s embarrassment as June probes her father’s interest in her.', alt: 'Case study for T3, affective cause reasoning.' },
-    { img: 'assets/img/figures/fig12-t4.webp', w: 2000, h: 1627, ctx: 'Black Shirt’s hesitant explanation and its effect on Pink Shirt.', alt: 'Case study for T4, affective effect reasoning.' }
-  ];
-  function initCases() {
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
-    var img = document.getElementById('case-img'), ctx = document.getElementById('case-ctx'), panel = document.getElementById('panel-case');
-    function choose(i, focus) {
-      tabs.forEach(function (t, j) { t.setAttribute('aria-selected', String(i === j)); t.tabIndex = i === j ? 0 : -1; });
-      var c = CASES[i];
-      img.src = c.img; img.alt = c.alt; img.width = c.w; img.height = c.h; ctx.textContent = c.ctx;
-      panel.setAttribute('aria-labelledby', tabs[i].id);
-      if (focus) tabs[i].focus();
-    }
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { choose(i); });
-      t.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          e.preventDefault(); choose((i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length, true);
-        }
-      });
-    });
-    document.getElementById('case-open').addEventListener('click', function () {
-      openLightbox(img.getAttribute('src'), 'Fig. 12. ' + ctx.textContent + ' Text is condensed from the source records.');
-    });
-  }
-
   /* --------------------------------------------------------------- lightbox */
   var lb = document.getElementById('lightbox');
   function openLightbox(src, cap) {
@@ -675,7 +645,7 @@
   window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { drawAll(); alignConnectors(); }, 120); });
   window.addEventListener('scroll', hideTip, { passive: true });
 
-  initLinks(); initHeader(); initNav(); buildSpans(); initDefs(); initCases(); initLightbox(); initResultsToggle(); initCopy(); initBlueprintTasks();
+  initLinks(); initHeader(); initNav(); buildSpans(); initDefs(); initLightbox(); initResultsToggle(); initCopy(); initBlueprintTasks();
   initAnalysis(); drawDerivation(); drawAll(); alignConnectors();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignConnectors);
   window.addEventListener('load', alignConnectors);

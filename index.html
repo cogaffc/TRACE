@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-33">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-34">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -425,19 +425,33 @@
     <h2 id="cases-title">Case Studies</h2>
     <p class="section-lede">Each panel shows the task input, selected observations and appraisal readings, the construct outputs, and a comparison with the reference and two baselines.</p>
 
-    <div class="tabs" role="tablist" aria-label="Case studies">
-      <button type="button" role="tab" id="tab-t1" aria-controls="panel-case" aria-selected="true" data-case="0"><span class="tchip">T1</span>Affect recognition</button>
-      <button type="button" role="tab" id="tab-t2" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-case="1"><span class="tchip">T2</span>Regulation decoding</button>
-      <button type="button" role="tab" id="tab-t3" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-case="2"><span class="tchip">T3</span>Cause reasoning</button>
-      <button type="button" role="tab" id="tab-t4" aria-controls="panel-case" aria-selected="false" tabindex="-1" data-case="3"><span class="tchip">T4</span>Effect reasoning</button>
+    <div class="case-grid">
+      <figure>
+        <figcaption><span>T1</span> Affect recognition</figcaption>
+        <button type="button" class="case-img" data-lightbox="assets/img/figures/fig12-t1.webp" data-caption="Fig. 12, T1. Grounded affect recognition. The defendant's response when Kevin explains the defense strategy. This example comes from a separate illustrative run." aria-label="Enlarge T1 affect recognition case">
+          <img src="assets/img/figures/fig12-t1.webp" alt="Paper Fig. 12, T1: observations, appraisals, affective state, manifestations, and reference and baseline comparisons." loading="lazy" width="2000" height="1316">
+        </button>
+      </figure>
+      <figure>
+        <figcaption><span>T2</span> Regulation decoding</figcaption>
+        <button type="button" class="case-img" data-lightbox="assets/img/figures/fig12-t2.webp" data-caption="Fig. 12, T2. Regulation decoding. Focus on the colleague as Laura confronts him." aria-label="Enlarge T2 regulation decoding case">
+          <img src="assets/img/figures/fig12-t2.webp" alt="Paper Fig. 12, T2: the colleague's fear, outward anger, and inferred regulation, with reference and baseline comparisons." loading="lazy" width="2000" height="1316">
+        </button>
+      </figure>
+      <figure>
+        <figcaption><span>T3</span> Cause reasoning</figcaption>
+        <button type="button" class="case-img" data-lightbox="assets/img/figures/fig12-t3.webp" data-caption="Fig. 12, T3. Affective cause reasoning. The woman's embarrassment as June probes her father's interest in her." aria-label="Enlarge T3 cause reasoning case">
+          <img src="assets/img/figures/fig12-t3.webp" alt="Paper Fig. 12, T3: affect, observation and appraisal, and external and internal causes, with reference and baseline comparisons." loading="lazy" width="2000" height="1627">
+        </button>
+      </figure>
+      <figure>
+        <figcaption><span>T4</span> Effect reasoning</figcaption>
+        <button type="button" class="case-img" data-lightbox="assets/img/figures/fig12-t4.webp" data-caption="Fig. 12, T4. Affective effect reasoning. Black Shirt's hesitant explanation and its effect on Pink Shirt." aria-label="Enlarge T4 effect reasoning case">
+          <img src="assets/img/figures/fig12-t4.webp" alt="Paper Fig. 12, T4: affect, observation and appraisal, and the recipient's physical response, with reference and baseline comparisons." loading="lazy" width="2000" height="1627">
+        </button>
+      </figure>
     </div>
-    <div class="case-panel" id="panel-case" role="tabpanel" aria-labelledby="tab-t1">
-      <p class="case-ctx" id="case-ctx">The defendant's response when Kevin explains the defense strategy.</p>
-      <button type="button" class="case-img" id="case-open" aria-label="Enlarge case study">
-        <img id="case-img" src="assets/img/figures/fig12-t1.webp" alt="Case study for T1, grounded affect recognition." loading="lazy" width="2000" height="1316">
-      </button>
-      <p class="note">From Fig. 12 of the paper. Text is condensed from the source records. The T1 example comes from a separate illustrative run.</p>
-    </div>
+    <p class="note">Fig. 12 from the paper. Click a panel to enlarge. Text is condensed from the source records; T1 comes from a separate illustrative run.</p>
   </div>
 </section>
 
@@ -495,6 +509,6 @@
 </dialog>
 <div class="tooltip" id="tooltip" role="status" hidden></div>
 
-<script src="assets/js/main.js?v=20261008-6" defer></script>
+<script src="assets/js/main.js?v=20261008-7" defer></script>
 </body>
 </html>
