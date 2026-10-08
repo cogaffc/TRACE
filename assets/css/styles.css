@@ -261,8 +261,15 @@ sup { line-height: 0; }
 .dataset-note { margin-top: 6px; }
 .dataset-more { margin-top: 10px; }
 .dataset-more summary { cursor: pointer; font-size: 14px; color: var(--ink-2); }
+.task-guide { margin: 24px 0 0; border-top: 1px solid var(--rule); }
+.task-guide > div { display: grid; grid-template-columns: 215px minmax(0, 1fr); gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--rule-2); }
+.task-guide dt { font-size: 14px; font-weight: 600; }
+.task-guide dt span { display: inline-block; width: 28px; color: var(--muted); font-size: 12px; font-weight: 500; }
+.task-guide dd { margin: 0; color: var(--ink-2); font-size: 14px; line-height: 1.55; }
 @media (max-width: 640px) {
   .dataset-charts { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .task-guide > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .task-guide dd { padding-left: 28px; }
 }
 .spans { margin: 16px 0 0; }
 .spans-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
