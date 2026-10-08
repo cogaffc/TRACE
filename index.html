@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-31">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261008-32">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -206,6 +206,24 @@
       <div><dt>Videos</dt><dd>646</dd></div>
       <div><dt>Tasks</dt><dd>5</dd></div>
     </dl>
+
+    <div class="dataset-charts" aria-label="Dataset statistics">
+      <figure><figcaption>Video scenes <span>646 videos</span></figcaption><img src="assets/img/statistics/scenes.svg" width="440" height="190" alt="Paper-reported scene estimates: Home 240, Outdoor 128, Office 90, Institutional 47, School 39, Restaurant 38, Medical 34, Leisure 30." loading="lazy"></figure>
+      <figure><figcaption>Social relationships <span>646 videos</span></figcaption><img src="assets/img/statistics/relationships.svg" width="440" height="190" alt="Paper-reported relationship estimates: Romantic 161, Authority 141, Professional 109, Family 103, Friends 90, Strangers 42." loading="lazy"></figure>
+      <figure><figcaption>QA pairs by task <span>3,746 total</span></figcaption><img src="assets/img/statistics/tasks.svg" width="440" height="190" alt="QA counts: T1 919, T2 401, T3 795, T4 1123, T5 508." loading="lazy"></figure>
+      <figure><figcaption>Emotion categories <span>T1 annotations</span></figcaption><img src="assets/img/statistics/emotions.svg" width="440" height="190" alt="12 emotion categories: Anger 294, Surprise 205, Sadness 203, Fear 146, Happiness 138, Disgust 118, Guilt 60, Frustration 49, Anxiety 48, Embarrassment 44, Relief 40, Neutral 11." loading="lazy"></figure>
+      <figure><figcaption>Regulation tactics <span>401 T2 pairs</span></figcaption><img src="assets/img/statistics/regulation.svg" width="440" height="190" alt="Suppression 189, Substitution 98, None 76, Amplification 29, Fabrication 9." loading="lazy"></figure>
+      <figure><figcaption>Effect types <span>1,123 T4 pairs</span></figcaption><img src="assets/img/statistics/effects.svg" width="440" height="190" alt="Physical 452, Affective 385, Mental 286." loading="lazy"></figure>
+    </div>
+    <p class="note dataset-note">Statistics reported in the paper; scene and relationship counts are estimates. Emotion categories count labels, not QA pairs. Bar scales start at zero and differ across charts.</p>
+    <details class="dataset-more">
+      <summary>Polarity, intensity, and cause structure</summary>
+      <div class="dataset-charts">
+        <figure><figcaption>Polarity <span>919 T1 pairs</span></figcaption><img src="assets/img/statistics/polarity.svg" width="440" height="190" alt="Negative 734, Positive 142, Mixed 23, Neutral 20." loading="lazy"></figure>
+        <figure><figcaption>Intensity <span>919 T1 pairs</span></figcaption><img src="assets/img/statistics/intensity.svg" width="440" height="190" alt="Medium 422, High 415, Low 76, None 6." loading="lazy"></figure>
+        <figure><figcaption>Cause structure <span>795 T3 pairs</span></figcaption><img src="assets/img/statistics/causes.svg" width="440" height="190" alt="External only 409; internal and external 386." loading="lazy"></figure>
+      </div>
+    </details>
 
     <figure class="spans">
       <div class="spans-legend" aria-hidden="true">
