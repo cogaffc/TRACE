@@ -12,7 +12,7 @@
     ink: '#17213A', ink2: '#4A5468', muted: '#818A9C'
   };
   // External resources: fill in when public; pending buttons turn into links automatically.
-  var LINKS = { arxiv: '', huggingface: '' };
+  var LINKS = { arxiv: 'https://arxiv.org/abs/2610.11410', huggingface: '' };
 
   /* ------------------------------------------------------------------ data */
   var TASKS = ['T1', 'T2', 'T3', 'T4', 'T5', 'Avg.'];
